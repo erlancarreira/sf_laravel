@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateSalesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('sales', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->dateTime('date_sale');
+            $table->float('amount_sale', 8, 2);
+            $table->float('discount', 8, 2);
+            $table->float('increase', 8, 2);
+            $table->float('amount_total', 8, 2); 
+            $table->text('obs');   
+            $table->timestamps();
+        });
+
+        Schema::table('sales', function (Blueprint $table) {
+            $table->unsignedInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+          
+        }); 
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('sales');
+    }
+}
