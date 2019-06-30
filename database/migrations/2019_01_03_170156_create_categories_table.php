@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('category_id')->unsigned()->index()->nullable();           
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             
-            $table->string('name');
+            $table->string('name', 200);
             $table->timestamps();
         });
 

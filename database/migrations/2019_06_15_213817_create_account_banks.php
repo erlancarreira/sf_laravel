@@ -23,10 +23,10 @@ class CreateAccountBanks extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('type');
-            $table->string('full_name');
-            $table->string('cpf');
-            $table->string('agency');
-            $table->string('account_number');
+            $table->string('full_name', 200);
+            $table->string('cpf', 14);
+            $table->string('agency', 50);
+            $table->string('account_number', 50);
             $table->timestamps();
         });
     }

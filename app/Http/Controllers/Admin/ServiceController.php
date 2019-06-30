@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Sale;
-use App\Models\Item;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class SaleController extends Controller
+use App\Http\Controllers\Controller;
+use App\Models\Item;
+
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Item::where('type', 'sale')->paginate(3);
-        return view('admin.panel.sale.list.index', compact('sales'));
+        $services = Item::where('type', 'service')->paginate(1);
+        return view('admin.panel.service.list.index', compact('services'));
     }
 
     /**
@@ -44,49 +44,44 @@ class SaleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sale  $sale
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale $sale)
+    public function show($id)
     {
-        $sales = Item::where('id', $sale->id)->with('categories', 'users', 'products')->first();
-        
-        return view('admin.panel.sale.show.index', compact('sales'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sale  $sale
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit($id)
     {
-        $categories   = \App\Models\Category::all();  
-        $itens = Item::where('id', $item->id)->with('categories', 'users', 'products')->paginate(3); 
-        
-        return view('admin.panel.sale.edit.index', compact('itens', 'categories'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sale  $sale
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sale  $sale
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public function destroy($id)
     {
         //
     }

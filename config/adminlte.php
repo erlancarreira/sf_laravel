@@ -111,7 +111,7 @@ return [
         
         'Painel',
         [
-            'text'     => 'Role',
+            'text'     => 'Roles',
             'url'      => 'admin/role',
             'icon'     => 'users',
             'submenu'  => [
@@ -129,7 +129,7 @@ return [
             ],
         ], 
         [
-            'text'     => 'Conta',
+            'text'     => 'Contas',
             'url'      => 'admin/conta',
             'icon'     => 'bank',
             'submenu'  => [
@@ -147,7 +147,7 @@ return [
             ],
         ], 
         [    
-            'text'     => 'Usuario',
+            'text'     => 'Usuarios',
             'url'      => 'admin/painel',
             'icon'     => 'user-plus',
             'submenu'  => [
@@ -168,7 +168,7 @@ return [
         ],
         //Item  
         [
-            'text'     => 'Item',
+            'text'     => 'Itens',
             'url'      => 'admin/painel',
             'icon'     => 'archive',
             'submenu'  => [
@@ -187,7 +187,7 @@ return [
         ],
         //Venda  
         [
-            'text'     => 'Venda',
+            'text'     => 'Vendas',
             'url'      => 'admin/painel/venda',
             'icon'     => 'line-chart',
             'submenu'  => [
@@ -201,7 +201,7 @@ return [
         ],
         //Servico  
         [
-            'text'     => 'Servico',
+            'text'     => 'Servicos',
             'url'      => 'admin/painel/servico',
             'icon'     => 'wrench',
             'submenu'  => [
@@ -229,7 +229,7 @@ return [
         ],
 
         [
-            'text'     => 'Categoria',
+            'text'     => 'Categorias',
             'url'      => 'admin/painel',
             'icon'     => 'sitemap',
             'submenu'  => [
@@ -248,7 +248,7 @@ return [
         ],
         [
             'can'      => 'read',
-            'text'     => 'Produto',
+            'text'     => 'Produtos',
             'url'      => 'admin/painel',
             'icon'     => 'shopping-cart',
             'submenu'  => [

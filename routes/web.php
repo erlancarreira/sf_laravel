@@ -57,7 +57,6 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 	$this->get('/categoria-cadastrar', 'CategoryController@create')->name('category.create');
 	$this->post('/category', 'CategoryController@store')->name('category.store');
 	$this->get('/categorias-listar', 'CategoryController@index')->name('listar');
-
 	$this->get('/categoria-editar/{category}', 'CategoryController@edit')->name('category.edit');
 	$this->post('/category-update/{category}', 'CategoryController@update')->name('category.update');
 	$this->get('/categoria-deletar/{category}', 'CategoryController@destroy')->name('category.delete');
@@ -70,9 +69,22 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 	$this->get('/produto-editar/{product}', 'ProductController@edit')->name('product.edit');
 	$this->post('/product-update/{product}', 'ProductController@update')->name('product.update');
 	$this->get('/produto-deletar/{product}', 'ProductController@destroy')->name('product.delete');
+    
+    //Rotas Sale
+	$this->get('/vendas-listar', 'SaleController@index')->name('listar');
+	$this->get('/venda-listar/{sale}', 'SaleController@show')->name('sale.show');
+	$this->get('/venda-editar/{sale}', 'SaleController@edit')->name('sale.edit');
+	$this->post('/venda-update/{sale}', 'SaleController@update')->name('sale.update');
+	$this->get('/venda-deletar/{sale}', 'SaleController@destroy')->name('sale.delete');
 
-	
-    $this->get('/', 'AdminController@index')->name('admin.home');  
+	//Rotas Service
+	$this->get('/servicos-listar', 'ServiceController@index')->name('listar');
+	$this->get('/servico-listar/{service}', 'ServiceController@show')->name('service.show');
+	$this->get('/servico-editar/{service}', 'ServiceController@edit')->name('service.edit');
+	$this->post('/servico-update/{service}', 'ServiceController@update')->name('service.update');
+	$this->get('/servico-deletar/{service}', 'ServiceController@destroy')->name('sale.delete');
+
+    //$this->get('/', 'AdminController@index')->name('admin.home');  
 
 
 });

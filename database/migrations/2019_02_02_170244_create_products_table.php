@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             // $table->unsignedInteger('category_id');
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             
-            $table->string('name');
+            $table->string('name', 200);
             $table->mediumText('description')->nullable();
             $table->integer('stock')->nullable();
             $table->float('price_cost', 8, 2)->nullable();

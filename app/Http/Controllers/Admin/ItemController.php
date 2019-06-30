@@ -93,7 +93,7 @@ class ItemController extends Controller
        
 
         for ($i=0; $i < count($request->amount); $i++) { 
-            if ($request->filled('product_id')) {
+            if ($request->filled('product_id') && !empty($request->product_id[$i])) {
                 
                 $item->products()->attach($request->product_id, 
                     [
@@ -101,7 +101,7 @@ class ItemController extends Controller
                         'amount'   => $request->amount[$i], 
                     ]
                 );
-                
+
             } else {
                 
                 $attribute->name     = $request->product_name[$i];

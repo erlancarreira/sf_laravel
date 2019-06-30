@@ -14,11 +14,8 @@ class CreateRolesTable extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-
             
-
+            $table->increments('id');
             $table->string('name', 50);
             $table->string('label', 200);
             $table->timestamps();
