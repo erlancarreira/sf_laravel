@@ -35,7 +35,7 @@ class ProductController extends Controller
         $categories = Category::where('user_id', auth()->user()->id)->get();
         $brands     = Brand::all();
 
-        return view('admin.panel.product.index', compact('categories', 'brands', 'products'));
+        return view('admin.panel.product.index', compact('categories', 'brands'));
     }
 
     /**
