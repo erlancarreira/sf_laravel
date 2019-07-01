@@ -247,7 +247,7 @@ return [
             
         ],
         [
-            'can'      => 'read',
+            //'can'      => 'read',
             'text'     => 'Produtos',
             'url'      => 'admin/painel',
             'icon'     => 'shopping-cart',
