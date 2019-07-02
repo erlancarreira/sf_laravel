@@ -14,14 +14,15 @@
 </div>
 <div class="box box-info">
     <div class="box-header">
-      <h3 class="box-title">Listar contas a pagar</h3>
+      <h3 class="box-title">Contas a pagar listar</h3>
     </div>
     <form method="POST" class="rtw-form" id="form">
 
-    @if ($bills->count() > 0)
+    
 
     <!-- /.box-header -->
-    <div class="box-body" >
+    <div class="box-body">
+      @if ($bills->count() > 0)
       <table id="tableData" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -102,19 +103,21 @@
             {{ $bills->links() }}
           </div>
         </div>        
-      </div>     
+      </div>
+      @else
+            
+      <div class="box-title">  
+        <h4>Nenhuma fatura cadastrada!</h4>
+      </div>
+      
+      @endif
+        
     </div>
+    
+       
 
     <!-- /.box-body -->   
-    @else
-              
    
-    <div class="box-title">  
-      <h4>Nenhum item cadastrado!</h4>
-    </div>
-    
-    @endif
-    
 
 
     </form>

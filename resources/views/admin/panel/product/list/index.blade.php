@@ -18,7 +18,7 @@
     </div>
     <form method="POST" class="rtw-form" id="form">
 
-    @forelse ($products as $product) 
+    @if ($products->count() > 0) 
     <!-- /.box-header -->
     <div class="box-body" >
       <table id="tableData" class="table table-bordered table-striped">
@@ -35,6 +35,7 @@
             <th>ACOES</th>
           </tr>
         </thead>
+        @foreach ($products as $product) 
         <tbody>
           <tr> 
             <th>{{ $product->id }}</th>              
@@ -60,19 +61,16 @@
           </tr>
          
           </tbody>
-          
+        @endforeach            
       </table>
     </div>
     <!-- /.box-body -->
-   
-    @empty
-              
-    
+    @else  
     <div class="box-title">  
       <h4>Nenhum produto cadastrado!</h4>
     </div>
+    @endif 
    
-    @endforelse
     
 
 
