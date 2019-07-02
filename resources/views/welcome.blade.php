@@ -86,6 +86,7 @@
 
                 <div>
                     <h4>Desenvolvimento de websites e sistemas para web</h4>
+                    <p>erlancarreira@hotmail.com | Somente Telegram <a href="https://telegram.me/erlancarreira_bot" target="_blank">(85) 98887-7164</a></p>
                 </div>    
             </div>
         </div>

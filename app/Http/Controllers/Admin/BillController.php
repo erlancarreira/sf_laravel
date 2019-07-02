@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Item;
 use App\Models\Bill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 
 class BillController extends Controller
@@ -16,7 +18,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        //
+        $bills = Item::where('type', 'bill')->paginate(3);
+        
+        return view('admin.panel.bill.list.index', compact('bills'));
     }
 
     /**

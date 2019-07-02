@@ -14,11 +14,11 @@
 </div>
 <div class="box box-info">
     <div class="box-header">
-      <h3 class="box-title">Listar Itens</h3>
+      <h3 class="box-title">Listar contas a pagar</h3>
     </div>
     <form method="POST" class="rtw-form" id="form">
 
-    @if ($itens->count() > 0)
+    @if ($bills->count() > 0)
 
     <!-- /.box-header -->
     <div class="box-body" >
@@ -42,24 +42,24 @@
         </thead>
         <tbody>
                        
-          @foreach ($itens as $item) 
+          @foreach ($bills as $bill) 
           <tr> 
-            <td>{{ $item->id }}</td> 
+            <td>{{ $bill->id }}</td> 
              
-            @foreach ($item->users as $user)
+            @foreach ($bill->users as $user)
             <td data-category-id="{{ $user->id }}">{{ $user->name }}</td>
             @endforeach
-            @if ($item->attributes->count() > 0) 
+            @if ($bill->attributes->count() > 0) 
             
            
-            <td >{{ $item->attributes[0]->name }}</td>
+            <td >{{ $bill->attributes[0]->name }}</td>
           
-            <td >{{ $item->attributes[0]->quantity  }}</td>
-            <td> {{ $item->attributes[0]->amount   }}</td>
+            <td >{{ $bill->attributes[0]->quantity  }}</td>
+            <td> {{ $bill->attributes[0]->amount   }}</td>
            
             @else
 
-            @foreach ($item->products as $product)
+            @foreach ($bill->products as $product)
               @if ($product->pivot->product_id == $product->id)
             <td> {{ $product->name }}</td>
               @endif
@@ -70,20 +70,20 @@
             @endif
             
             
-            <td class="payment_date" data-quantity="{{ $item->payment_date }}">{{ $item->payment_date }}</td>
-            <td class="payment_method" data-payment_method="{{ $item->payment_method }}">{{ $item->payment_method }}</td>
-            <td class="payment_status" data-payment_status="{{ $item->payment_status }}">{{ $item->payment_status }}</td>
-            <td data-price_sale="{{ $item->description }}">{{ $item->description }}</td>
-            <td data-price_sale="{{ $item->credit }}">{{ $item->credit }}</td>
-            <td data-price_sale="{{ $item->discount }}">{{ $item->discount }}</td>
-            <td data-price_sale="{{ $item->amount_total }}">{{ $item->amount_total }}</td>
+            <td class="payment_date" data-quantity="{{ $bill->payment_date }}">{{ $bill->payment_date }}</td>
+            <td class="payment_method" data-payment_method="{{ $bill->payment_method }}">{{ $bill->payment_method }}</td>
+            <td class="payment_status" data-payment_status="{{ $bill->payment_status }}">{{ $bill->payment_status }}</td>
+            <td data-price_bill="{{ $bill->description }}">{{ $bill->description }}</td>
+            <td data-price_bill="{{ $bill->credit }}">{{ $bill->credit }}</td>
+            <td data-price_bill="{{ $bill->discount }}">{{ $bill->discount }}</td>
+            <td data-price_bill="{{ $bill->amount_total }}">{{ $bill->amount_total }}</td>
 
 
            
             <td id="subActions">
-              <a href="{{ route('item.show', ['id' => $item->id]) }}" class="client btn-sm btn btn-primary fa fa-eye"></a>
-              <a href="{{ route('item.edit', ['id' => $item->id]) }}" class="client btn-sm btn btn-warning fa fa-cog"  data-edit="{{ $item->id }}"></a>
-              <a href="{{ route('item.delete', ['id' => $item->id]) }}" class="client btn-sm btn btn-danger fa fa-close" data-delete="{{ $item->id }}"></a>
+              <a href="{{ route('item.show', ['id' => $bill->id]) }}" class="client btn-sm btn btn-primary fa fa-eye"></a>
+              <a href="{{ route('item.edit', ['id' => $bill->id]) }}" class="client btn-sm btn btn-warning fa fa-cog"  data-edit="{{ $bill->id }}"></a>
+              <a href="{{ route('item.delete', ['id' => $bill->id]) }}" class="client btn-sm btn btn-danger fa fa-close" data-delete="{{ $bill->id }}"></a>
             </td>     
           </tr>
         @endforeach
@@ -93,13 +93,13 @@
       <div class="row"> 
         <div class="col-md-5">  
           <div style="margin-top: 30px;">  
-            <p>Pagina {{ $itens->currentPage() .' mostrando de '.  $itens->count() .' ate '. $itens->total() }} registros</p>
+            <p>Pagina {{ $bills->currentPage() .' mostrando de '.  $bills->count() .' ate '. $bills->total() }} registros</p>
           </div>       
         </div> 
         <div class="col-md-7 ">        
           
           <div class="pull-right">
-            {{ $itens->links() }}
+            {{ $bills->links() }}
           </div>
         </div>        
       </div>     

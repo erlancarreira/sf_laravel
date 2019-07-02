@@ -18,18 +18,27 @@
       <h3 class="box-title">#{{ $item->id }} - Item</h3>
     </div>
     <div class="box-body" >
-	    
-        <div class="row form-group">
+	    <div class="row form-group">
+	        <div class="col-xs-6">
+	            <div class="input-group">  
+	                <span class="input-group-addon">Categoria</span>  
+	                <input type="text" class="form-control" disabled="disabled" value="{{ $item->categories->name }}">
+	            </div>
+	        </div>    
             @forelse ($item->users as $user)
-            <div class="col-xs-12">
-                <div class="input-group">  
-                    <span class="input-group-addon">Usuario</span>  
-                    <input type="text" class="form-control" disabled="disabled" value="{{ $user->name }}">
-                </div>
-            </div>    
-            @empty
+	        <div class="col-xs-6">
+				<div class="input-group">  
+	                <span class="input-group-addon">Usuario</span>  
+				    <input type="text" class="form-control" disabled="disabled" value="{{ $user->name }}">
+				</div>
+	        </div>    
+			@empty
 
             @endforelse
+	            
+        </div>
+
+        <div class="row form-group">
             @forelse ($item->products as $product)
             <div class="col-xs-4">
                 <div class="input-group">  

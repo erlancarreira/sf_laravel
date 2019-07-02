@@ -9,10 +9,20 @@
     		<h3 class="box-title">Cadastrar Item</h3>
     	</div>
     	<div class="box-body">
-        @foreach ($itens as $item)  
+        @forelse ($itens as $item)  
     	    <form method="POST" action="{{ route('item.update', ['id' => $item->id]) }}">  	
     	    {!! csrf_field() !!}
-           
+            
+            <div class="form-group"> 
+                <div class="input-group"> 
+                    <span class="input-group-addon">Categoria: </span>  
+                    <select name="category_id" id="category_id" class="form-control select">
+                        @foreach ($categories as $category)
+                        <option {{ $category->id == $item->categories->id ? 'selected="selected"' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>    
             <div class="form-group"> 
     			<div class="input-group"> 
                     <span class="input-group-addon">Cliente: </span>  
@@ -148,7 +158,9 @@
             
                 <button type="submit" class="btn-block btn btn-primary">Atualizar</button>
 			</form>
-    	@endforeach	
+        @empty
+           <h4>Voce nao tem nenhuma venda cadastrada!</h4>    
+    	@endforelse	
     	</div>
     </div>
 @stop

@@ -81,9 +81,9 @@
 
            
             <td id="subActions">
-              <a href="{{ route('sale.show', ['id' => $sale->id]) }}" class="client btn-sm btn btn-primary fa fa-eye"></a>
-              <a href="{{ route('sale.edit', ['id' => $sale->id]) }}" class="client btn-sm btn btn-warning fa fa-cog"  data-edit="{{ $sale->id }}"></a>
-              <a href="{{ route('item.deletar', ['id' => $sale->id]) }}" class="client btn-sm btn btn-danger fa fa-close" data-delete="{{ $sale->id }}"></a>
+              <a href="{{ route('item.show', ['id' => $sale->id]) }}" class="client btn-sm btn btn-primary fa fa-eye"></a>
+              <a href="{{ route('item.edit', ['id' => $sale->id]) }}" class="client btn-sm btn btn-warning fa fa-cog"  data-edit="{{ $sale->id }}"></a>
+              <a href="{{ route('item.delete', ['id' => $sale->id]) }}" class="client btn-sm btn btn-danger fa fa-close" data-delete="{{ $sale->id }}"></a>
             </td>     
           </tr>
         @endforeach
