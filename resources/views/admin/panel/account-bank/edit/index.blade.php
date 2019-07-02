@@ -6,163 +6,71 @@
     
     <div id="item" class="box ">
     	<div class="box-header">
-    		<h3 class="box-title">Cadastrar Item</h3>
+    		<h3 class="box-title">Editar Conta</h3>
     	</div>
     	<div class="box-body">
-        @foreach ($itens as $item)  
-    	    <form method="POST" action="{{ route('item.update', ['id' => $item->id]) }}">  	
-    	    {!! csrf_field() !!}
-           
-            <div class="form-group"> 
-    			<div class="input-group"> 
-                    <span class="input-group-addon">Cliente: </span>  
-				    <select name="user_id" id="user_id" class="form-control">
-                        @foreach ($item->users as $user) 
-				        <option selected="selected" value="{{ $user->id }}" disabled="disabled">{{ $user->name }} - {{ $user->email }}</option>
-                        @endforeach
-                            
-				    </select>
-				</div>
-            </div>  
-            
+    	    <form method="POST" action="{{ route('account-bank.update', ['id' => $bank_id]) }}">  	
+    	        {!! csrf_field() !!}
+                <div class="form-group ">
+                    <select name="user_id" id="user_id" class="form-control">
+                        <option value=""></option>
+                        
+                            <option class="" value=""></option>
+                         
+                    </select>
+                </div>      
+                    
+                <div class="form-group ">
+                    
+                    <select id="listaBancos" class="form-control" name="ref">
+                        <option disabled selected hidden></option>
 
-            <div class="form-group"> 
-                <div class="input-group"> 
-                    <span class="input-group-addon">Tipo: </span>  
-                    <select name="type" id="type" class="form-control">
-
-                        @foreach ($types as $key => $type) 
-                        <option {{ ($item->type == $key ) ? "selected=selected" : '' }} value="{{ $key }}">{{ $type }}</option>
-                        @endforeach
-                            
                     </select>
                 </div>
-            </div>  
-            @forelse ($item->products as $product) 
-            <div class="form-group ">
+
+                <div class="form-group {{($errors->has('type')) ? 'has-warning' : '' }}"> 
+                    <select class="form-control" name="type">
+                        <option value="" disabled selected hidden></option>
+                        <option value="0">Conta Poupanca</option>
+                        <option value="1">Conta Corrente</option>
+                    </select>
+                </div>
                 
-                <div class="row"> 
-                    <div class="col-xs-4">
-                        <div class="product_row input-group" id="product_row">  
-                            <span class="input-group-addon">Item: </span>  
-                            <select name="product_id" id="product_id" class="form-control">
-                            
-                                
-                                <option selected="selected" value="{{ $product->id }}" >{{ $product->name }} </option>
-                                
-                            </select>
-                        </div>
-
-                    </div> 
-                    <div class="col-xs-4">
-                        <div class="input-group">  
-                            <span class="input-group-addon">Quantidade: </span>  
-                            <input class="form-control" type="number" name="quantity" value="{{ $product->pivot->quantity }}">
-                        </div>    
+                <div class="form-group ">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" name="full_name" class="form-control" placeholder="Titular da conta">
                     </div>
-                    <div class="col-xs-4">
-                        <div class="input-group">  
-                            <span class="input-group-addon">Valor: </span>  
-                            <input class="form-control" type="text" name="amount" value="{{ $product->pivot->amount }}">
-                        </div> 
+                </div>
+                
+
+                <div class="form-group "> 
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-drivers-license"></i></span>
+                        <input id='cpf' type="text" name="cpf" class="cpf format form-control" placeholder="" >
                     </div>
-                </div> 
+                </div>      
+                
 
-            </div>
-            @empty
-
-            @endforelse   
-			<div class="form-group ">
-                <div class="row"> 
-                    <div class="col-xs-4">
-                        <!-- Date -->
-                        <div class="form-group">
-                            <div class="input-group date" >
-                                <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                                <input type="text" class="form-control pull-right" id="datepicker" value="{{ date('d/m/Y', strtotime($item->payment_date)) }}">
-                                
-                                <input data-datepicker type="hidden" name="payment_date" id="payment_date" value="{{ date('Ymd', strtotime($item->payment_date)) }}">
-                                
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-                    </div> 
-
-                    <div class="col-xs-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Metodo: </span>  
-                            <select class="form-control select2" name="payment_method" id="pag_method">      
-                                <option {{ $item->payment_method == 1 ? 'selected="selected"' : '' }} value="1">Cartao</option>
-                                <option {{ $item->payment_method == 2 ? 'selected="selected"' : '' }} value="2">Dinheiro</option>
-                                <option {{ $item->payment_method == 3 ? 'selected="selected"' : '' }} value="3">A prazo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-xs-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Status: </span>  
-                            <select class="form-control select2" name="payment_status" id="status">
-                                <option {{ $item->payment_status == 1 ? 'selected="selected"' : '' }}  value="1">Pago</option>
-                                <option {{ $item->payment_status == 3 ? 'selected="selected"' : '' }}  value="3">Não pago</option>
-                                <option {{ $item->payment_status == 2 ? 'selected="selected"' : '' }}  value="2">Pendente</option>
-                            </select>
-                        </div>
+                <div class="form-group ">  
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                        <input type="text" name="agency" class="form-control format" placeholder="" >
                     </div>
                 </div>    
-            </div>
-            
-            <div class="form-group">    
-                <div class="row row_atributes">
-                    <div class="col-xs-12 m-0">    
-                        <textarea name="description" id="description" class="form-control select2" placeholder="Descricao">{{ $item->description }}</textarea>
+                
+                
+                <div class="form-group ">    
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                        <input type="text" name="account_number" class="format form-control" placeholder="">
                     </div>
-                </div>
+                </div>    
+                
 
-            </div>  
-                
-            <div class="row"> 
-                <div class="col-xs-4 m-0">
-                    <div class="form-group">
-                        <label for="value">Adicional</label>
-                        <div class="input-group">
-                            
-                            <span class="input-group-addon">R$</span>
-                            <input class="form-control item" id="additionally" type="text" name="additionally" value="{{ $item->additionally }}">
-                            
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="discount">Desconto</label>
-                        <div class="input-group">
-                            <span class="input-group-addon">R$</span>
-                            <input id="amount_discount" class="form-control item p-2" name="discount" value="{{ $item->discount }}">
-                        </div>
-                    </div>
-                </div> 
-
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="total">Total</label>
-                        <div class="input-group">
-                            <span class="input-group-addon">R$</span>
-                            <input class="form-control p-2 "  id="total" name="amount_total" disabled value="{{ $item->total }}">
-                        </div>
-                    </div>
-                </div> 
-                
-            </div>
+                <button type="submit" class="btn-block btn btn-primary">Atualizar</button> 
             
-                <button type="submit" class="btn-block btn btn-primary">Atualizar</button>
-			</form>
-    	@endforeach	
+			</form>	
     	</div>
     </div>
 @stop

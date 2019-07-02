@@ -75,7 +75,7 @@
             <td class="payment_method" data-payment_method="{{ $item->payment_method }}">{{ $item->payment_method }}</td>
             <td class="payment_status" data-payment_status="{{ $item->payment_status }}">{{ $item->payment_status }}</td>
             <td data-price_sale="{{ $item->description }}">{{ $item->description }}</td>
-            <td data-price_sale="{{ $item->credit }}">{{ $item->credit }}</td>
+            <td data-price_sale="{{ $item->additionally }}">{{ $item->additionally }}</td>
             <td data-price_sale="{{ $item->discount }}">{{ $item->discount }}</td>
             <td data-price_sale="{{ $item->amount_total }}">{{ $item->amount_total }}</td>
 

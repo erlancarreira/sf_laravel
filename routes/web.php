@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 	Route::get('/banco-cadastrar', 'AccountBankController@create')->name('account-bank.create');
 	Route::post('bank', 'AccountBankController@store')->name('account-bank.store');
 	Route::get('/banco-editar/{bank}', 'AccountBankController@edit')->name('account-bank.edit');
+	Route::post('/bank-update/{bank}', 'AccountBankController@update')->name('account-bank.update');
 	Route::get('/bancos-listar', 'AccountBankController@index')->name('account-bank.list');
 	Route::get('/banco-deletar/{bank}', 'AccountBankController@destroy')->name('account-bank.delete');
 

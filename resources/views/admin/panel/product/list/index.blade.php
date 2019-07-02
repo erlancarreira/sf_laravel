@@ -36,8 +36,9 @@
             <th>ACOES</th>
           </tr>
         </thead>
-        @foreach ($products as $product) 
+        
         <tbody>
+          @foreach ($products as $product) 
           <tr> 
             <th>{{ $product->id }}</th>              
             <td data-name="{{ $product->name }}">{{ $product->name }}</td>
@@ -60,9 +61,9 @@
               <a href="{{ route('product.delete', ['id' => $product->id]) }}" class="client btn-sm btn btn-danger fa fa-trash" data-delete="{{ $product->id }}"></a>
             </td>     
           </tr>
-         
+          @endforeach  
           </tbody>
-        @endforeach            
+                  
       </table>
       @else  
       <div class="box-title">  

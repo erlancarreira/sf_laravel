@@ -15,7 +15,7 @@
                     <label for="name">Nome</label>
                     <select name="name" id="name" class="form-control select2">
                     @foreach ($products as $prod)
-                    <option {{ ($prod->id == $product->id) ? 'selected' : '' }} value="{{ $prod->id }}">{{ $product->name }}</option>
+                    <option {{ ($prod->id == $product->id) ? 'selected' : '' }} value="{{ $prod->name }}">{{ $product->name }}</option>
                     @endforeach
                     </select>
                 </div>
@@ -36,11 +36,10 @@
                     <div class="col-xs-6">  
             			<div class="form-group">
         				    <label for="brand_id">Marca</label>
-        				    <select name="brand_id" id="brand_id" class="form-control select2">
+        				    <select name="brand_id" id="brand_id" class="form-control ">
         				        @foreach ($brands as $brand)
                                 <option {{ ($brand->id == $product->brands->first()->id) ? 'selected' : '' }} value="{{ $brand->id }}">{{ $brand->name }}</option>
                                 @endforeach
-
         				    </select>
         				</div>
                         <input type="hidden" name="brand_name" id="new_brand">
@@ -50,8 +49,8 @@
                 <div class="row">
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <label for="quantity">Quantidade</label>
-                            <input type="number" class="form-control p-2" id="quantity" name="quantity" value="{{ $product->stock }}">
+                            <label for="stock">Quantidade</label>
+                            <input type="number" class="form-control p-2" id="stock" name="stock" value="{{ $product->stock }}">
                         </div>
                     </div> 
 
@@ -113,29 +112,29 @@
             },
         })
 
-        $("#brand_id").select2({
-           // placeholder: 'Escolha um produto',
-            tags : true,  
-            // matcher: matchCustom
-            createTag: function (params, data) {
-                var term = $.trim(params.term);
+        // $("#brand_id").select2({
+        //    // placeholder: 'Escolha um produto',
+        //     tags : true,  
+        //     // matcher: matchCustom
+        //     createTag: function (params, data) {
+        //         var term = $.trim(params.term);
 
                 
-                console.log(data)  
-                if (term === '') {
-                    return null
-                }
+        //         console.log(data)  
+        //         if (term === '') {
+        //             return null
+        //         }
                 
-                $('#new_brand').val(params.term)  
+        //         $('#new_brand').val(params.term)  
                 
-                return {
-                    id: term,
-                    text: term,
-                    newTag: true, // add additional parameters
-                    isNew: true
-                }
-            },
-        })
+        //         return {
+        //             id: term,
+        //             text: term,
+        //             newTag: true, // add additional parameters
+        //             isNew: true
+        //         }
+        //     },
+        // })
 })
 </script>    
 @stop

@@ -85,9 +85,13 @@ class AccountBankController extends Controller
      * @param  \App\Models\AccountBank  $accountBank
      * @return \Illuminate\Http\Response
      */
-    public function edit(AccountBank $accountBank)
+    public function edit(AccountBank $bank)
     {
-        //
+        $id      = auth()->user()->id;
+        $bank_id = $bank->id;
+        $bank    = AccountBank::where('user_id', $id)->with('users')->get()->first();
+        
+        return view('admin.panel.account-bank.edit.index', compact('bank', 'bank_id'));
     }
 
     /**

@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -110,11 +110,15 @@ return [
     'menu' => [
         
         'Painel',
-        [
-            'text'     => 'Roles',
-            'url'      => 'admin/role',
-            'icon'     => 'users',
-            'submenu'  => [
+        [           
+            [
+                'header' => 'ROLE',
+                'can' => 'roles'
+            ],
+            'text'    => 'Roles',
+            'url'     => 'admin/role',
+            'icon'    => 'users',
+            'submenu' => [
                 [
                     'text'     => 'Cadastrar',
                     'url'      => 'admin/role-cadastrar',

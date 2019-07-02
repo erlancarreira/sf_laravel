@@ -9,7 +9,7 @@ class Item extends Model
     //protected $primaryKey = 'id'; // or null
 
     //public $incrementing = false;
-    const TYPE = ['sale', 'service', 'bill'];
+    const TYPE = ['sale' => 'Vendas', 'service' => 'Servicos', 'bill' => 'Contas a pagar'];
 
     public $timestamps = false;
 
@@ -20,11 +20,12 @@ class Item extends Model
     protected $fillable = [
         'category_id', 
         'user_id', 
+        'type',
         'payment_date', 
         'payment_method', 
         'payment_status', 
         'description', 
-        'credit', 
+        'additionally', 
         'discount', 
         'amount_total'
     ];

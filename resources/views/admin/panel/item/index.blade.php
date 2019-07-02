@@ -89,9 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="new_row">
-                </div> 
-
+             
 				<div class="row">
                     <div class="col-xs-4">
                         <!-- Date -->
@@ -121,7 +119,6 @@
                             </select>
                         </div>
                     </div>
-
                     
                     <div class="col-xs-4">
                         <div class="form-group {{($errors->has('payment_status')) ? 'has-warning' : '' }}">
@@ -154,7 +151,7 @@
                             <div class="input-group">
                                 
                                 <span class="input-group-addon">R$</span>
-                                <input class="form-control item" id="amount_add" type="text" name="credit">
+                                <input class="form-control item" id="additionally" type="text" name="additionally">
                                 
                             </div>
                         </div>

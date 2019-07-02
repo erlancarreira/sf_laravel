@@ -120,7 +120,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        //dd($request);
+        $product->categories->attach($request->category_id);
+        $product->brands->attach($request->brand_id);
+        $product->update($request->except(['_token', 'category_name', 'category_id', 'brand_name']));
+        
+        return redirect('/admin/produtos-listar')->with('success', 'Produto atualizado com sucesso!');
     }
 
     /**

@@ -27,7 +27,7 @@ class CreateItensTable extends Migration
             $table->enum('payment_method', [1, 2, 3]);
             $table->enum('payment_status', [1, 2, 3]);
             $table->mediumText('description')->nullable(); 
-            $table->float('credit', 8, 2)->nullable();
+            $table->float('additionally', 8, 2)->nullable();
             $table->float('discount', 8, 2)->nullable();
             $table->float('amount_total', 8, 2)->nullable(); 
             

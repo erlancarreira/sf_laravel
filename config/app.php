@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://simplefinance.test'),
+    'url' => env('APP_URL', 'https://simplefinance.test'),
 
     'asset_url' => env('ASSET_URL', null),
 

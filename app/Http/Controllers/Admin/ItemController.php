@@ -39,11 +39,11 @@ class ItemController extends Controller
     public function create(Request $request)
     {   
         
-        $id = auth()->user()->id; 
+        $id         = auth()->user()->id; 
         $users      = User::where('user_id', $id)->orWhere('id', $id)->get();
         $categories = Category::where('user_id', $id)->get();  
-        $products = Product::where('user_id', $id)->with('categories', 'brands')->get();  
-        $itens = Item::TYPE;
+        $products   = Product::where('user_id', $id)->with('categories', 'brands')->get();  
+        $itens      = Item::TYPE;
 
         return view('admin.panel.item.index', compact('users', 'categories', 'products', 'id', 'itens'));
     }
@@ -86,7 +86,7 @@ class ItemController extends Controller
         $item->payment_method = $request->payment_method; 
         $item->payment_status = $request->payment_status;
         $item->description    = $request->description;
-        $item->credit         = $request->credit;
+        $item->additionally   = $request->additionally;
         $item->discount       = $request->discount;
         $item->amount_total   = $request->amount_total;
         $item->save();
@@ -143,8 +143,9 @@ class ItemController extends Controller
         
         $categories   = Category::all();  
         $itens = $item->where('id', $item->id)->with('categories', 'users', 'products')->get(); 
+        $types = Item::TYPE; 
         
-        return view('admin.panel.item.edit.index', compact('itens', 'categories'));
+        return view('admin.panel.item.edit.index', compact('itens', 'categories', 'types'));
     }
 
     /**
@@ -156,11 +157,12 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
+        //dd($request);
         $attributes = ['product_id' => $request->product_id, 'quantity' => $request->quantity, 'amount' => $request->amount];
         
         $item->products()->updateExistingPivot($request->product_id, $attributes);
     
-        $item->update($request->except(['_token']));
+        $item->update($request->except(['_token', 'user_id', 'category_id', 'product_id', 'qauntity', 'amount']));
         
         return redirect('/admin/itens-listar')->with('success', 'Item atualizado com sucesso!');
 
