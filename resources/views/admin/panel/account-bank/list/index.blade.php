@@ -14,13 +14,13 @@
 </div>
 <div class="box box-info">
     <div class="box-header">
-      <h3 class="box-title">Clientes Itens</h3>
+      <h3 class="box-title">Contas</h3>
     </div>
     <form method="POST" class="rtw-form" id="form">
    
-    @if ($accounts->count() > 0)
     <!-- /.box-header -->
     <div class="box-body" >
+      @forelse ($accounts as $account) 
         <table id="tableData" class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -34,49 +34,39 @@
               <th>ACOES</th>
             </tr>
             </thead>
+
             <tbody>
                          
-            @foreach ($accounts as $value) 
-             
+            
+            <!-- !! dd($account) !!}  -->
               
             <tr> 
-              <td>{{ $value->id }}</td> 
-              <td class="ref">{{ $value->ref }}</td>  
-              <td class="account_type" data-type="{{ $value->type }}">{{ $value->type }}</td>
-              <td data-full_name="{{ $value->full_name }}">{{ $value->full_name }}</td>
-              <td class="cpf_number" data-cpf="{{ $value->cpf }}">{{ $value->cpf }}</td>
-              <td class="agency">{{ $value->agency }}</td>
-              <td class="account_number">{{ $value->account_number }}</td>
+              <td>{{ $account->id }}</td> 
+              <td class="ref">{{ $account->ref }}</td>  
+              <td class="account_type" data-type="{{ $account->type }}">{{ $account->type }}</td>
+              <td data-full_name="{{ $account->full_name }}">{{ $account->full_name }}</td>
+              <td class="cpf_number" data-cpf="{{ $account->cpf }}">{{ $account->cpf }}</td>
+              <td class="agency">{{ $account->agency }}</td>
+              <td class="account_number">{{ $account->account_number }}</td>
              
               <td id="subActions">
-                <a href="/admin/ver?id={{ $value->id }}" class="client btn-sm btn btn-primary"><i class="fa fa-fw fa-eye "></i></a>
-                <!-- <a href=" BASE; " class=" m-2">Ver</a>  -->  
-                <button id="input1" value="{{ $value->id }}" type="button" class="client btn-sm btn btn-warning"  data-toggle="modal" data-target="#modal-warning" data-edit="{{ $value->id }}">
-                <i class="fa fa-cog "></i>
-                </button>
-                <button id="input2" value="{{ $value->id }}" type="button" class="client btn-sm btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-delete="{{ $value->id }}">
-                <i class="fa fa-close "></i>
-                </button>
+                <a href="{{ route('account-bank.edit', ['id' => $account->id]) }}" class="client btn-sm btn btn-warning fa fa-cog"  data-edit="{{ $account->id }}"></a>
+                <a href="{{ route('account-bank.delete', ['id' => $account->id]) }}" class="client btn-sm btn btn-danger fa fa-trash" data-delete="{{ $account->id }}"></a>
               </td>     
             </tr>
-            @endforeach
+            
             </tbody>
+           
             
         </table>
+
+        @empty
+        <div class="box-title">  
+          <h4>Nenhum conta cadastrada!</h4>
+        </div>
+        @endforelse
     </div>
     <!-- /.box-body -->
-   
-    @else
-              
-    <div class="box-body">
-      <div class="box-title">  
-        <h3>Nenhum produto cadastrado!</h3>
-      </div>
-    </div>
-    @endif
-    
-
-
     </form>
 </div>
 @stop
@@ -141,7 +131,6 @@
 
     setStatusMethod(account_type)
     
-
     $(document).ready( function(){
       
       function setBank(bank) {   

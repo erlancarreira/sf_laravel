@@ -15,9 +15,7 @@
 					<label for="name">Categoria</label>
 	                <input type="text" class="form-control" name="name" value="{{ $category->name }}">
 	            </div>
-	            <br>
-                
-                
+	            
                 <div class="form-group">
                 	<label for="category_id">Categoria Pai</label>
 	                <select id="category_id" name="category_id" class="form-control">
@@ -29,7 +27,7 @@
 	                  
 	                </select>
                 </div>
-	            <br>
+	            
 	            <button type="submit" class="btn-block btn btn-primary">Atualizar</button>
 			</form>	
     	</div>

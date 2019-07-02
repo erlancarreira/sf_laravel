@@ -29,9 +29,11 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 	Route::get('/role-deletar/{role}', 'RoleController@destroy')->name('role.delete');
 
 	//Rotas Contas Banco
-	Route::get('/cadastrar-banco', 'AccountBankController@create')->name('account-bank.create');
-	Route::post('account-bank', 'AccountBankController@store')->name('account-bank.store');
-	Route::get('/listar-contas', 'AccountBankController@index')->name('account-bank.list');
+	Route::get('/banco-cadastrar', 'AccountBankController@create')->name('account-bank.create');
+	Route::post('bank', 'AccountBankController@store')->name('account-bank.store');
+	Route::get('/banco-editar/{bank}', 'AccountBankController@edit')->name('account-bank.edit');
+	Route::get('/bancos-listar', 'AccountBankController@index')->name('account-bank.list');
+	Route::get('/banco-deletar/{bank}', 'AccountBankController@destroy')->name('account-bank.delete');
 
 	//Rotas Usuarios
 	Route::get('/usuario-cadastrar', 'UserController@create')->name('user.create');
@@ -39,7 +41,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 	Route::get('/usuarios-listar', 'UserController@index')->name('user.list');
 	Route::get('/usuario-listar/{user}', 'UserController@show')->name('user.show');
 	Route::get('/usuario-editar/{user}', 'UserController@edit')->name('user.edit');
-	Route::get('/deletar-item/{user}', 'UserController@destroy')->name('user.delete');
+	Route::get('/usuario-deletar/{user}', 'UserController@destroy')->name('user.delete');
     
     //Rotas Itens
     Route::get('/item-cadastrar', 'ItemController@create')->name('item.create');

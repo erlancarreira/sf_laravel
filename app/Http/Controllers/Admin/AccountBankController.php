@@ -42,12 +42,22 @@ class AccountBankController extends Controller
      */
     public function store(Request $request)
     {
-
+        //dd($request);
         $accountBank = new AccountBank; 
 
-        !$request->user_id ?? $accountBank->user_id = $request->user_id;
-        
-        $accountBank->ref            = $request->bank_id;
+        $request->validate([  
+            'ref'            => 'required|integer',
+            'user_id'        => 'required|integer',
+            'type'           => 'required|string',
+            'full_name'      => 'required|string',
+            'cpf'            => 'required|string',
+            'agency'         => 'required|string',
+            'account_number' => 'required|string',
+            
+        ]);
+
+        $accountBank->user_id        = $request->user_id; 
+        $accountBank->ref            = $request->ref;
         $accountBank->type           = $request->type;
         $accountBank->full_name      = $request->full_name; 
         $accountBank->cpf            = $request->cpf;
@@ -55,7 +65,7 @@ class AccountBankController extends Controller
         $accountBank->account_number = $request->account_number;
         $accountBank->save();
 
-        return redirect('/admin/cadastrar-banco');
+        return redirect('/admin/bancos-listar');
     }
 
     /**
@@ -98,8 +108,10 @@ class AccountBankController extends Controller
      * @param  \App\Models\AccountBank  $accountBank
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AccountBank $accountBank)
+    public function destroy(AccountBank $bank)
     {
-        //
+        
+        $bank->delete();  
+        return redirect('/admin/banco-listar');  
     }
 }

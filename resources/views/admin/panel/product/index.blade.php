@@ -73,8 +73,6 @@
                     <textarea name="description" id="description" class="form-control select2" placeholder="Descricao"></textarea> 
                 </div>    
 
-                        
-
                 <button type="submit" class="btn-block btn btn-primary">Cadastrar</button>
 			</form>
     		

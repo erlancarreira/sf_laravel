@@ -108,11 +108,11 @@
     <!-- /.box-body -->   
     @else
               
-    <div class="box-body">
-      <div class="box-title">  
-        <h3>Nenhum item cadastrado!</h3>
-      </div>
+   
+    <div class="box-title">  
+      <h4>Nenhum item cadastrado!</h4>
     </div>
+    
     @endif
     
 

@@ -11,12 +11,12 @@
     	    
     	    @include('includes.alerts') 
     	    
-    	    <form method="POST" action="{{ route('bank.store') }}">  	
+    	    <form method="POST" action="{{ route('account-bank.store') }}">  	
     	        {!! csrf_field() !!}
 
-    	        <div class="form-group">
+    	        <div class="form-group {{($errors->has('user_id')) ? 'has-warning' : '' }}">
 				    <select name="user_id" id="user_id" class="form-control">
-				        <option value="">Escolha um cliente</option>
+				        <option value="">{{ ($errors->has('user_id')) ? 'Selecione o usuario' : 'Escolha um cliente' }}</option>
                         @if (count($users) > 0)
                             @foreach ($users as $user)
                             <option class="{{ ($user->id === $id) ? 'alert-success' : '' }}" value="{{ $user->id }}">{{ $user->email }} </option>
@@ -25,48 +25,52 @@
 				    </select>
 				</div>		
 				
-				<div class="form-group">
+				<div class="form-group {{($errors->has('ref')) ? 'has-warning' : '' }}">
 	                
-	                <select id="listaBancos" class="form-control" name="bank_id">
-	                  	<option value="" disabled selected hidden>Escolha o banco</option>
+	                <select id="listaBancos" class="form-control" name="ref">
+	                  	<option disabled selected hidden>{{ ($errors->has('ref')) ? 'Selecione o banco' : 'Escolha um banco' }}</option>
 
 	                </select>
                 </div>
 
-	            <div class="form-group">
-                    
+	            <div class="form-group {{($errors->has('type')) ? 'has-warning' : '' }}"> 
                     <select class="form-control" name="type">
-                        <option value="" disabled selected hidden>Tipo de conta</option>
+                        <option value="" disabled selected hidden>{{ ($errors->has('type')) ? 'Selecione o tipo de conta' : 'Tipo de conta' }}</option>
                         <option value="0">Conta Poupanca</option>
                         <option value="1">Conta Corrente</option>
                     </select>
                 </div>
                 
-
-				<div class="input-group">
-	                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-	                <input type="text" name="full_name" class="form-control" placeholder="Titular da conta">
+                <div class="form-group {{($errors->has('full_name')) ? 'has-warning' : '' }}">
+					<div class="input-group">
+		                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+		                <input type="text" name="full_name" class="form-control" placeholder="Titular da conta">
+		            </div>
 	            </div>
-	            <br>
+	            
 
-	            <div class="input-group">
-	                <span class="input-group-addon"><i class="fa fa-drivers-license"></i></span>
-	                <input id='cpf' type="text" name="cpf" class="cpf format form-control" placeholder="XXX-XXXXXX-XX">
-	            </div>
+                <div class="form-group {{($errors->has('cpf')) ? 'has-warning' : '' }}"> 
+		            <div class="input-group">
+		                <span class="input-group-addon"><i class="fa fa-drivers-license"></i></span>
+		                <input id='cpf' type="text" name="cpf" class="cpf format form-control" placeholder="{{($errors->has('cpf')) ? 'Cpf eh obrigatorio' : 'XXX-XXXXXX-XX' }}" >
+		            </div>
+	            </div>      
+	            
 
-	                  
-	            <br>
-
-	            <div class="input-group">
-	                <span class="input-group-addon"><i class="fa fa-home"></i></span>
-	                <input type="text" name="agency" class="form-control format" placeholder="Agencia">
-	            </div>
-	            <br>
-
-	            <div class="input-group">
-	                <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-	                <input type="text" name="account_number " class="format form-control" placeholder="Conta">
-	            </div>
+                <div class="form-group {{($errors->has('agency')) ? 'has-warning' : '' }}">  
+		            <div class="input-group">
+		                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+		                <input type="text" name="agency" class="form-control format" placeholder="{{($errors->has('agency')) ? 'Escolha uma agencia' : 'Agencia' }}" >
+		            </div>
+		        </div>    
+	            
+                
+                <div class="form-group {{($errors->has('account_number')) ? 'has-warning' : '' }}">    
+		            <div class="input-group">
+		                <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+		                <input type="text" name="account_number" class="format form-control" placeholder="{{($errors->has('account_number')) ? 'Escolha uma conta' : 'Conta' }}">
+		            </div>
+		        </div>    
 	            <br>
 
 	            
@@ -168,7 +172,7 @@
                 $(data).each( (i, item) => {
                 	//console.log(item.label)
                 	$('#listaBancos').append($('<option>', {
-                        value: item.value,
+                        value: parseInt(item.value),
                         text: item.label  
                     }))
                 })

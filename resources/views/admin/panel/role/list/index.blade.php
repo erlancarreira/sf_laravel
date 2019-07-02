@@ -18,10 +18,11 @@
     </div>
     <form method="POST" class="rtw-form" id="form">
     
-    @if ($roles->count() > 0)
+    
 
     <!-- /.box-header -->
     <div class="box-body" >
+      @forelse ($roles as $role) 
         <table id="tableData" class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -33,7 +34,7 @@
             </thead>
             <tbody>
 
-            @foreach ($roles as $role) 
+            
             <tr> 
               <th>{{ $role->id }}</th>              
               <td data-name="{{ $role->name }}">{{ $role->name }}</td>
@@ -45,25 +46,19 @@
                 <a href="{{ route('role.delete', ['id' => $role->id]) }}" class="client btn-sm btn btn-danger fa fa-close" data-delete="{{ $role->id }}"></a>
               </td>     
             </tr>
-            @endforeach
+
             </tbody>
             
         </table>
+      @empty
+      <div class="box-title">  
+        <h4>Nenhum role cadastrado!</h4>
+      </div>
+      @endforelse
     </div>
     <!-- /.box-body -->
-   
-    @else
-              
-    <div class="box-body">
-      <div class="box-title">  
-        <h3>Você ainda não tem nenhum cliente cadastrado!</h3>
-      </div>
-    </div>
-    @endif
-    
-
-
     </form>
+    
 </div>
 @stop
 <!-- /.box -->

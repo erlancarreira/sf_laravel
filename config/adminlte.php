@@ -135,12 +135,12 @@ return [
             'submenu'  => [
                 [
                     'text'     => 'Cadastrar',
-                    'url'      => 'admin/cadastrar-banco',
+                    'url'      => 'admin/banco-cadastrar',
                     'icon'     => 'user-plus',
                 ],
                 [
                     'text'     => 'Listar',
-                    'url'      => 'admin/listar-contas',
+                    'url'      => 'admin/bancos-listar',
                     'icon'     => 'users',
                 ],
                 
