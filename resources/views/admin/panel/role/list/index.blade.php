@@ -52,7 +52,7 @@
         </table>
       @empty
       <div class="box-title">  
-        <h4>Nenhum role cadastrado!</h4>
+        <h5>Nenhum role cadastrado!</h5>
       </div>
       @endforelse
     </div>

@@ -62,7 +62,7 @@
 
         @empty
         <div class="box-title">  
-          <h4>Nenhum conta cadastrada!</h4>
+          <h5>Nenhum conta cadastrada!</h5>
         </div>
         @endforelse
     </div>

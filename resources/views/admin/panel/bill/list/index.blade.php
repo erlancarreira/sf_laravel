@@ -107,7 +107,7 @@
       @else
             
       <div class="box-title">  
-        <h4>Nenhuma fatura cadastrada!</h4>
+        <h5>Nenhuma fatura cadastrada!</h5>
       </div>
       
       @endif

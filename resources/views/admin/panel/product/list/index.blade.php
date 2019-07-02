@@ -18,9 +18,10 @@
     </div>
     <form method="POST" class="rtw-form" id="form">
 
-    @if ($products->count() > 0) 
+    
     <!-- /.box-header -->
     <div class="box-body" >
+      @if ($products->count() > 0) 
       <table id="tableData" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -63,13 +64,14 @@
           </tbody>
         @endforeach            
       </table>
+      @else  
+      <div class="box-title">  
+        <h5>Nenhum produto cadastrado!</h5>
+      </div>
+      @endif 
     </div>
     <!-- /.box-body -->
-    @else  
-    <div class="box-title">  
-      <h4>Nenhum produto cadastrado!</h4>
-    </div>
-    @endif 
+    
    
     
 

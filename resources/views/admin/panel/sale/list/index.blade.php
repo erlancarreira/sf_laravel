@@ -18,10 +18,11 @@
     </div>
     <form method="POST" class="rtw-form" id="form">
 
-    @if ($sales->count() > 0)
+    
 
     <!-- /.box-header -->
     <div class="box-body" >
+      @if ($sales->count() > 0)
       <table id="tableData" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -102,21 +103,16 @@
             {{ $sales->links() }}
           </div>
         </div>        
-      </div>     
+      </div> 
+      @else
+      <div class="box-title">  
+        <h5>Nenhum item cadastrado!</h5>
+      </div>
+      @endif    
     </div>
 
     <!-- /.box-body -->   
-    @else
-              
-    <div class="box-body">
-      <div class="box-title">  
-        <h3>Nenhum item cadastrado!</h3>
-      </div>
-    </div>
-    @endif
-    
-
-
+   
     </form>
 </div>
 @stop
