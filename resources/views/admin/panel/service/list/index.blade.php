@@ -14,7 +14,7 @@
 </div>
 <div class="box box-info">
     <div class="box-header">
-      <h3 class="box-title">Listar Vendas</h3>
+      <h3 class="box-title">Listar Servicos</h3>
     </div>
     <form method="POST" class="rtw-form" id="form">
 

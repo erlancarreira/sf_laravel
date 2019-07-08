@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Erlan Carreira</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -86,7 +86,7 @@
 
                 <div>
                     <h4>Desenvolvimento de websites e sistemas para web</h4>
-                    <p>erlancarreira@hotmail.com | Somente Telegram <a href="https://telegram.me/erlancarreira_bot" target="_blank">(85) 98887-7164</a></p>
+                    <p><a href="mailto:erlancarreira@hotmail.com" style="text-decoration: none; ">erlancarreira@hotmail.com</a> | Somente Telegram <a href="https://telegram.me/erlancarreira" target="_blank">(85) 98887-7164</a></p>
                 </div>    
             </div>
         </div>
